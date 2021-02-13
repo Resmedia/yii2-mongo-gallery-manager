@@ -1,6 +1,6 @@
 {
     "name": "resmedia/yii2-mongo-gallery-manager",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Extension for yii2 with mongodb, that allows to manage image galleries",
     "type": "yii2-extension",
     "minimum-stability": "dev",
