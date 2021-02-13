@@ -8,13 +8,12 @@ use yii\helpers\Html;
 
 <div class="btn-toolbar" style="padding:4px">
   <div class="btn-group" style="display: inline-block;">
-    <div class="btn btn-success btn-file" style="display: inline-block">
-      <i class="glyphicon glyphicon-plus"></i><?php echo Yii::t('galleryManager/main', 'Add…'); ?>
+    <div class="btn btn-primary btn-file" style="display: inline-block">
+      <?php echo Yii::t('galleryManager/main', 'Add…'); ?>
       <input type="file" name="gallery-image" class="afile" accept="image/*" multiple="multiple"/>
     </div>
   </div>
   <div class="btn-group" style="display: inline-block;">
-
     <label class="btn btn-default">
       <input type="checkbox" style="margin-right: 4px;" class="select_all"><?php echo Yii::t(
             'galleryManager/main',
@@ -22,10 +21,10 @@ use yii\helpers\Html;
         ); ?>
     </label>
     <div class="btn btn-default disabled edit_selected">
-      <i class="glyphicon glyphicon-pencil"></i> <?php echo Yii::t('galleryManager/main', 'Edit'); ?>
+      <?php echo Yii::t('galleryManager/main', 'Edit'); ?>
     </div>
     <div class="btn btn-default disabled remove_selected">
-      <i class="glyphicon glyphicon-remove"></i> <?php echo Yii::t('galleryManager/main', 'Remove'); ?>
+      <?php echo Yii::t('galleryManager/main', 'Remove'); ?>
     </div>
   </div>
 </div>
@@ -79,7 +78,7 @@ use yii\helpers\Html;
         </div>
         <div class="modal-body">
           <div class="progress ">
-            <div class="progress-bar progress-bar-info progress-bar-striped active upload-progress"
+            <div class="progress-bar progress-bar-primary progress-bar-striped active upload-progress"
                  role="progressbar">
             </div>
           </div>

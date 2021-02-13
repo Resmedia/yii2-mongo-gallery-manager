@@ -56,23 +56,23 @@
 
       var html = '<div class="photo-editor row">' +
         '<div class="col-xs-4">' +
-        '<img src="' + htmlEscape(src) + '"  style="max-width:100%;">' +
+        '<img src="' + htmlEscape(src) + '"  style="max-width:100%; margin-top: 45px;">' +
         '</div>' +
         '<div class="col-xs-8">' +
 
         (opts.hasName
           ?
-        '<div class="form-group">' +
-        '<label class="control-label" for="photo_name_' + id + '">' + opts.nameLabel + ':</label>' +
-        '<input class="form-control" type="text" name="photo[' + id + '][name]" class="input-xlarge" value="' + htmlEscape(name) + '" id="photo_name_' + id + '"/>' +
-        '</div>' : '') +
+          '<div class="form-group">' +
+          '<label class="control-label" for="photo_name_' + id + '">' + opts.nameLabel + ':</label>' +
+          '<input class="form-control" type="text" name="photo[' + id + '][name]" class="input-xlarge" value="' + htmlEscape(name) + '" id="photo_name_' + id + '"/>' +
+          '</div>' : '') +
 
         (opts.hasDesc
           ?
-        '<div class="form-group">' +
-        '<label class="control-label" for="photo_description_' + id + '">' + opts.descriptionLabel + ':</label>' +
-        '<textarea class="form-control" name="photo[' + id + '][description]" rows="3" cols="40" class="input-xlarge" id="photo_description_' + id + '">' + htmlEscape(description) + '</textarea>' +
-        '</div>' : '') +
+          '<div class="form-group">' +
+          '<label class="control-label" for="photo_description_' + id + '">' + opts.descriptionLabel + ':</label>' +
+          '<textarea class="form-control" name="photo[' + id + '][description]" rows="3" cols="40" class="input-xlarge" id="photo_description_' + id + '">' + htmlEscape(description) + '</textarea>' +
+          '</div>' : '') +
 
         '</div>' +
         '</div>';
@@ -93,7 +93,7 @@
     }
 
     photoTemplate += '<span class="deletePhoto btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove glyphicon-white"></i></span>' +
-    '</div><input type="checkbox" class="photo-select"/></div>';
+      '</div><input type="checkbox" class="photo-select"/></div>';
 
 
     function addPhoto(id, src, name, description, rank) {
@@ -325,6 +325,7 @@
           processData: false,
           dataType: "json"
         }).done(function (resp) {
+          console.log(resp, opts.uploadUrl);
           addPhoto(resp['id'], resp['preview'], resp['name'], resp['description'], resp['rank']);
           ids.push(resp['id']);
           $uploadProgress.css('width', '100%');
@@ -340,7 +341,7 @@
         var count = data.length;
         for (var key = 0; key < count; key++) {
           var p = data[key];
-          var photo = photos[p.id];
+          var photo = photos[p.id.$oid];
           $('img', photo).attr('src', p['src']);
           if (opts.hasName)
             $('.caption h5', photo).text(p['name']);
@@ -356,6 +357,11 @@
         updateButtons();
       }, 'json');
 
+    });
+
+    $('.close-upload', $editorModal).click(function (e) {
+      e.preventDefault();
+      $editorModal.modal('hide');
     });
 
     $('.edit_selected', $gallery).click(function (e) {
@@ -375,7 +381,6 @@
         ids.push($(this).data('id'));
       });
       removePhotos(ids);
-
     });
 
     $('.select_all', $gallery).change(function () {
@@ -393,7 +398,7 @@
 
     for (var i = 0, l = opts.photos.length; i < l; i++) {
       var resp = opts.photos[i];
-      addPhoto(resp['id'], resp['preview'], resp['name'], resp['description'], resp['rank']);
+      addPhoto(resp['id'].$oid, resp['preview'], resp['name'], resp['description'], resp['rank']);
     }
   }
 

@@ -1,5 +1,4 @@
 /* Photo Gallery */
-
 .gallery-manager {
   position: relative;
   border: 1px solid #DDD;
@@ -161,6 +160,19 @@
     padding: 4px;
     &:not(:last-child) {
       border-bottom: 1px solid #DDD;
+    }
+  }
+  .modal-dialog {
+    background-color: white;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    .modal-content {
+      z-index: 1;
+      border: 0;
+      border-radius: 0;
+      outline: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
     }
   }
 }

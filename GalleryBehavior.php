@@ -187,7 +187,7 @@ class GalleryBehavior extends Behavior
 
     protected function getFileName($imageId, $version = 'original')
     {
-        return implode(
+        $path = implode(
             '/',
             [
                 $this->getGalleryId(),
@@ -195,11 +195,14 @@ class GalleryBehavior extends Behavior
                 $version . '.' . $this->extension,
             ]
         );
+        return $path;
     }
 
     public function getUrl($imageId, $version = 'original')
     {
         $path = $this->getFilePath($imageId, $version);
+
+        $path = str_replace('//', '/', $path);
 
         if (!file_exists($path)) {
             return null;
@@ -329,7 +332,7 @@ class GalleryBehavior extends Behavior
 
         $this->replaceImage($id, $fileName);
 
-        $galleryImage = new GalleryImage($this, ['id' => $id]);
+        $galleryImage = new GalleryImage($this, ['_id' => $id]);
 
         if ($this->_images !== null) {
             $this->_images[] = $galleryImage;
@@ -395,13 +398,12 @@ class GalleryBehavior extends Behavior
             }
         }
 
-
         foreach ($imagesToUpdate as $image) {
-            if (isset($imagesData[$image->id]['name'])) {
-                $image->name = $imagesData[$image->id]['name'];
+            if (isset($imagesData[(string)$image->id]['name'])) {
+                $image->name = $imagesData[(string)$image->id]['name'];
             }
-            if (isset($imagesData[$image->id]['description'])) {
-                $image->description = $imagesData[$image->id]['description'];
+            if (isset($imagesData[(string)$image->id]['description'])) {
+                $image->description = $imagesData[(string)$image->id]['description'];
             }
             $collection = \Yii::$app->mongodb->getCollection($this->tableName);
             /** @var $collection \yii\mongodb\Collection */
