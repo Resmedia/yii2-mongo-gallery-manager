@@ -1,0 +1,30 @@
+{
+    "name": "resmedia/yii2-mongo-gallery-manager",
+    "version": "1.0.0",
+    "description": "Extension for yii2 with mongodb, that allows to manage image galleries",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "image",
+        "gallery",
+        "mongodb"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgenii Res",
+            "email": "resmedia@ya.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2-jui": "*",
+        "yiisoft/yii2-imagine": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "resmedia\\yii2\\mongoGalleryManager\\": ""
+        }
+    }
+}
+
