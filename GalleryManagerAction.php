@@ -115,13 +115,13 @@ class GalleryManagerAction extends Action
         Yii::$app->response->headers->set('Content-Type', 'text/html');
 
         return Json::encode(
-            array(
+            [
                 'id' => $image->id,
                 'rank' => $image->rank,
                 'name' => (string)$image->name,
                 'description' => (string)$image->description,
                 'preview' => $image->getUrl('preview'),
-            )
+            ]
         );
     }
 
@@ -159,15 +159,15 @@ class GalleryManagerAction extends Action
             throw new HttpException(400, 'Nothing to save');
         }
         $images = $this->behavior->updateImagesData($imagesData);
-        $resp = array();
+        $resp = [];
         foreach ($images as $model) {
-            $resp[] = array(
+            $resp[] = [
                 'id' => $model->id,
                 'rank' => $model->rank,
                 'name' => (string)$model->name,
                 'description' => (string)$model->description,
                 'preview' => $model->getUrl('preview'),
-            );
+            ];
         }
 
         return Json::encode($resp);
