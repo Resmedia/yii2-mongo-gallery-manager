@@ -89,10 +89,10 @@
     photoTemplate += '</div><div class="actions">';
 
     if (opts.hasName || opts.hasDesc) {
-      photoTemplate += '<span class="editPhoto btn btn-primary btn-xs"><i class="fas fa-pencil-alt text-white"></i></span> ';
+      photoTemplate += '<span class="editPhoto btn btn-primary btn-sm"><i class="fas fa-pencil-alt text-white"></i></span> ';
     }
 
-    photoTemplate += '<span class="deletePhoto btn btn-danger btn-xs"><i class="far fa-trash-alt text-white"></i></span>' +
+    photoTemplate += '<span class="deletePhoto btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></span>' +
       '</div><input type="checkbox" class="photo-select"/></div>';
 
 
