@@ -9,11 +9,11 @@ class GalleryManagerAsset extends AssetBundle
 {
     public $sourcePath = '@resmedia/yii2/mongoGalleryManager/assets';
     public $js = [
-        'jquery.iframe-transport.js',
-        'jquery.galleryManager.js',
+        'iframe-transport.min.js',
+        'gallery-manager.min.js',
     ];
     public $css = [
-        'galleryManager.css'
+        'gallery-manager.css'
     ];
     public $depends = [
         'yii\web\JqueryAsset',

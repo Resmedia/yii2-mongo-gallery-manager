@@ -30,7 +30,7 @@ composer require resmedia/yii2-mongo-gallery-manager
 or add to composer
 ```json
 {
-  "resmedia/yii2-mongo-gallery-manager": "^1.0"
+  "resmedia/yii2-mongo-gallery-manager": "^1.1.1"
 }
 ```
 

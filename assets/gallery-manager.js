@@ -89,10 +89,10 @@
     photoTemplate += '</div><div class="actions">';
 
     if (opts.hasName || opts.hasDesc) {
-      photoTemplate += '<span class="editPhoto btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil glyphicon-white"></i></span> ';
+      photoTemplate += '<span class="editPhoto btn btn-primary btn-xs"><i class="fas fa-pencil-alt text-white"></i></span> ';
     }
 
-    photoTemplate += '<span class="deletePhoto btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove glyphicon-white"></i></span>' +
+    photoTemplate += '<span class="deletePhoto btn btn-danger btn-xs"><i class="far fa-trash-alt text-white"></i></span>' +
       '</div><input type="checkbox" class="photo-select"/></div>';
 
 
@@ -137,7 +137,7 @@
         url: opts.deleteUrl,
         data: 'id[]=' + ids.join('&id[]=') + csrfParams,
         success: function (t) {
-          if (t == 'OK') {
+          if (t === 'OK') {
             for (var i = 0, l = ids.length; i < l; i++) {
               photos[ids[i]].remove();
               delete photos[ids[i]];
@@ -170,8 +170,8 @@
 
     function updateButtons() {
       var selectedCount = $('.photo.selected', $sorter).length;
-      $('.select_all', $gallery).prop('checked', $('.photo', $sorter).length == selectedCount);
-      if (selectedCount == 0) {
+      $('.select_all', $gallery).prop('checked', $('.photo', $sorter).length === selectedCount);
+      if (selectedCount === 0) {
         $('.edit_selected, .remove_selected', $gallery).addClass('disabled');
       } else {
         $('.edit_selected, .remove_selected', $gallery).removeClass('disabled');
@@ -217,7 +217,7 @@
       var uploadFileName = $('.afile', $gallery).attr('name');
 
       var multiUpload = function (files) {
-        if (files.length == 0) return;
+        if (files.length === 0) return;
         $progressOverlay.show();
         $uploadProgress.css('width', '5%');
         var filesCount = files.length;
@@ -234,7 +234,7 @@
           xhr.open('POST', opts.uploadUrl, true);
           xhr.onload = function () {
             uploadedCount++;
-            if (this.status == 200) {
+            if (this.status === 200) {
               var resp = JSON.parse(this.response);
               addPhoto(resp['id'], resp['preview'], resp['name'], resp['description'], resp['rank']);
               ids.push(resp['id']);
@@ -260,7 +260,7 @@
         var lastIsOver = false;
 
         setInterval(function () {
-          if (isOver != lastIsOver) {
+          if (isOver !== lastIsOver) {
             if (isOver) el.classList.add('over');
             else el.classList.remove('over');
             lastIsOver = isOver
