@@ -13,6 +13,11 @@ class GalleryImage
      */
     protected $galleryBehavior;
 
+    public function __toString(): string
+    {
+        return 'parent';
+    }
+
     /**
      * @param GalleryBehavior $galleryBehavior
      * @param array           $props
