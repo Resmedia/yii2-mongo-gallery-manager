@@ -55,11 +55,11 @@ class GalleryManager extends Widget
         if ($this->apiRoute === null) {
             throw new Exception('$apiRoute must be set.', 500);
         }
-
+        $id = (string)$this->id;
         $images = [];
         foreach ($this->behavior->getImages() as $image) {
             $images[] = [
-                'id' => $image->id,
+                'id' => (string)$image->id,
                 'rank' => $image->rank,
                 'name' => (string)$image->name,
                 'description' => (string)$image->description,
@@ -89,9 +89,9 @@ class GalleryManager extends Widget
         $opts = Json::encode($opts);
         $view = $this->getView();
         GalleryManagerAsset::register($view);
-        $view->registerJs("$('#{$this->id}').galleryManager({$opts});");
+        $view->registerJs("$('#{$id}').galleryManager({$opts});");
 
-        $this->options['id'] = $this->id;
+        $this->options['id'] = $id;
         $this->options['class'] = 'gallery-manager';
 
         return $this->render('galleryManager');
